@@ -22,9 +22,9 @@ module.exports = {
     },
     addNewUser:(req, res) => {
         try{
-            // let newUser = user.length + 1
+            let newId = user.length + 1
             let newUser = {
-                Id:Number(req.body.Id),
+                Id:newId,
                 firstName:req.body.firstName,
                 lastName:req.body.lastName
             }
