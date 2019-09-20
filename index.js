@@ -8,7 +8,7 @@ const indexRoute = require("./routes/index");
 const app = express();
 
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const PORT = process.env.PORT || 3000
 
