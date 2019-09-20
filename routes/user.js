@@ -1,35 +1,19 @@
 const express = require("express");
 const router = express.Router();
-const user = require("../data/user");
+const {
+  getAll,
+  getById,
+  addNewUser,
+  deleteUser,
+  updateUser
+} = require("../controllers/index");
 
-router.get("/", (req, res, next) => {
-  res.send({
-    data: user
-  });
-});
 
-router.post("/", (req, res, next) => {
-  user.push(req.body);
-  res.send({
-    data: user
-  });
-});
+router.get("/", getAll)
+router.get("/:id", getById)
+router.post("/", addNewUser)
+router.delete("/:id", deleteUser)
+router.put("/:id", updateUser)
 
-router.delete("/:id", (req, res, next) => {
-  user.splice(req.params.id - 1, 1);
-  res.send({
-    data: user
-  });
-});
-
-router.put("/:id", (req, res, next) => {
-  user.splice(req.params.id - 1, 1, {
-    id: parseInt(req.body.id),
-    name: req.body.name
-  });
-  res.send({
-    data: user
-  });
-});
 
 module.exports = router;
